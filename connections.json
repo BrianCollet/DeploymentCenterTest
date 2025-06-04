@@ -1,0 +1,27 @@
+{
+  "serviceProviderConnections": {
+    "AzureFile": {
+      "parameterValues": {
+        "storageAccountUri": "@appsetting('AzureFile_storageAccountUri')",
+        "authProvider": {
+          "Type": "ManagedServiceIdentity"
+        }
+      },
+      "parameterSetName": "ManagedServiceIdentity",
+      "serviceProvider": {
+        "id": "/serviceProviders/AzureFile"
+      },
+      "displayName": "new_conn_00873"
+    },
+    "FileSystem": {
+      "parameterValues": {
+        "mountPath": "@appsetting('FileSystem_mountPath')"
+      },
+      "serviceProvider": {
+        "id": "/serviceProviders/FileSystem"
+      },
+      "displayName": "new_conn_9d5f8"
+    }
+  },
+  "managedApiConnections": {}
+}

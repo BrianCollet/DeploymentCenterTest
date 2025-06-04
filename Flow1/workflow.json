@@ -1,0 +1,48 @@
+{
+  "definition": {
+    "$schema": "https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json#",
+    "actions": {
+      "List_files": {
+        "type": "ServiceProvider",
+        "inputs": {
+          "parameters": {
+            "folderId": "folder1"
+          },
+          "serviceProviderConfiguration": {
+            "connectionName": "AzureFile",
+            "operationId": "listFolder",
+            "serviceProviderId": "/serviceProviders/AzureFile"
+          }
+        },
+        "runAfter": {}
+      },
+      "List_files_and_subfolders_in_a_folder": {
+        "type": "ServiceProvider",
+        "inputs": {
+          "parameters": {
+            "folderPath": "\\"
+          },
+          "serviceProviderConfiguration": {
+            "connectionName": "FileSystem",
+            "operationId": "listFolder",
+            "serviceProviderId": "/serviceProviders/FileSystem"
+          }
+        },
+        "runAfter": {
+          "List_files": [
+            "SUCCEEDED"
+          ]
+        }
+      }
+    },
+    "contentVersion": "1.0.0.0",
+    "outputs": {},
+    "triggers": {
+      "When_a_HTTP_request_is_received": {
+        "type": "Request",
+        "kind": "Http"
+      }
+    }
+  },
+  "kind": "Stateful"
+}
