@@ -1,4 +1,5 @@
 bin/
 obj/
+output/
 
 local.settings.json
